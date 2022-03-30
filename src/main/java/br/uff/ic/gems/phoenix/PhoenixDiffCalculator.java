@@ -27,7 +27,7 @@ import br.uff.ic.gems.phoenix.similarity.ElementSimilarityResult;
 
 public class PhoenixDiffCalculator {
     
-    private static Logger LOG = Logger.getLogger(PhoenixDiffCalculator.class.getName());
+    //private static Logger LOG = Logger.getLogger(PhoenixDiffCalculator.class.getName());
     
     public static final String ENDERECO_NAMESPACE = "http://www.w3.org/2000/xmlns/";
 
@@ -65,7 +65,7 @@ public class PhoenixDiffCalculator {
         
     }
 
-    public void executeComparison() throws ComparisonException, PhoenixDiffException {
+    public Document executeComparison() throws ComparisonException, PhoenixDiffException {
         
         long timestamp = System.currentTimeMillis();
 
@@ -75,15 +75,15 @@ public class PhoenixDiffCalculator {
         ElementSimilarity ec = new ElementSimilarity(SettingsHelper.getIgnoreThresholdOnRoot());
         ElementSimilarityResult result = ec.compare(e1, e2);
 
-        LOG.info("Time to compare the documents: " + (System.currentTimeMillis() - timestamp) + " ms.");
+        //LOG.info("Time to compare the documents: " + (System.currentTimeMillis() - timestamp) + " ms.");
         timestamp = System.currentTimeMillis();
         
-        processResult(result);
+        return processResult(result);
         
-        LOG.info("Time to create result diff: " + (System.currentTimeMillis() - timestamp) + " ms.");
+        // LOG.info("Time to create result diff: " + (System.currentTimeMillis() - timestamp) + " ms.");
     }
 
-    private void processResult(ElementSimilarityResult result) throws PhoenixDiffException {
+    private Document processResult(ElementSimilarityResult result) throws PhoenixDiffException {
         
         DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
         
@@ -104,9 +104,9 @@ public class PhoenixDiffCalculator {
             for (ElementDiffNode node : nodes) {
                 Element elm = node.toXmlTree(doc);
                 diffroot.appendChild(elm);
-            }        
-            
-            printXmlToOutput(doc);
+            }
+
+            return doc;
             
         } catch (DOMException e) {
             throw new PhoenixDiffException("Something went wrongn while creating output xml", e);

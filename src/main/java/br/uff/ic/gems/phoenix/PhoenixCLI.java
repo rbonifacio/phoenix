@@ -6,7 +6,7 @@ import br.uff.ic.gems.phoenix.exception.PhoenixDiffException;
 
 public class PhoenixCLI {
     
-    private static Logger LOG = Logger.getLogger(PhoenixCLI.class.getName());
+    //private static Logger LOG = Logger.getLogger(PhoenixCLI.class.getName());
 
     private static String xmlfilepath1 = null, 
                           xmlfilepath2 = null;
@@ -56,7 +56,7 @@ public class PhoenixCLI {
             showErrorAndExit(ex.getMessage());
         }
 
-        LOG.info("Time parsing files: " + (System.currentTimeMillis() - timestamp) + " ms.");
+        //LOG.info("Time parsing files: " + (System.currentTimeMillis() - timestamp) + " ms.");
         timestamp = System.currentTimeMillis();
         
 
@@ -67,7 +67,7 @@ public class PhoenixCLI {
             showErrorAndExit(ex.getMessage());
         }
         
-        LOG.info("Total execution time: " + (System.currentTimeMillis() - initialTimestamp) + " ms.");
+        //LOG.info("Total execution time: " + (System.currentTimeMillis() - initialTimestamp) + " ms.");
     }
 
     private static void logInfo() {
@@ -86,7 +86,7 @@ public class PhoenixCLI {
             sb.append(" | attribWeight=" + SettingsHelper.getAttributeSimilarityWeight());
             sb.append(" | childrenWeight=" + SettingsHelper.getChildrenSimilarityWeight());
         }
-        LOG.info(sb.toString());
+        //LOG.info(sb.toString());
     }
 
     private static void processArguments(String[] args) {
@@ -224,7 +224,7 @@ public class PhoenixCLI {
     }
     
     private static void showErrorAndExit(String message) {
-        LOG.severe("Erro! " + message);
+        //LOG.severe("Erro! " + message);
         System.exit(1);
     }
 }

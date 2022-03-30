@@ -24,7 +24,7 @@ import br.uff.ic.gems.phoenix.exception.ComparisonException;
 
 public class ElementSimilarity {
     
-    private static Logger LOG = Logger.getLogger(ElementSimilarity.class.getName());
+    //private static Logger LOG = Logger.getLogger(ElementSimilarity.class.getName());
 
     public static float MAXIMUM_SIMILARITY = 1.0f;
     public static float SKIP_SIMILARITY = -1.0f;
@@ -47,7 +47,7 @@ public class ElementSimilarity {
             throw new ComparisonException("At least of the elements is null");
         }
         
-        LOG.finer("Comparing elements: " + e1.getNodeName() + " <> " + e2.getNodeName());
+        //LOG.finer("Comparing elements: " + e1.getNodeName() + " <> " + e2.getNodeName());
 
         similarity = 0.0;
         
